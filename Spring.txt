@@ -1,0 +1,50 @@
+The IoC container is responsible to instantiate, configure and assemble the objects.
+There are two types of IoC containers. They are:
+
+BeanFactory
+Resource r=new ClassPathResource("applicationContext.xml");  
+    BeanFactory factory=new XmlBeanFactory(r); 
+ApplicationContext
+ApplicationContext interface is built on top of the BeanFactory interface. 
+It adds some extra functionality than BeanFactory such as simple integration with Spring's AOP, message resource handling (for I18N), 
+event propagation, application layer specific context (e.g. WebApplicationContext) for web application. 
+So it is better to use ApplicationContext than BeanFactory.
+------------------------------------------------------------------------
+Dependency Injection (DI) is a design pattern that removes the dependency from the programming code 
+so that it can be easy to manage and test the application
+Two ways to perform Dependency Injection in Spring framework
+Spring framework provides two ways to inject dependency
+
+By Constructor
+<bean id="e" class="com.javatpoint.Employee">  
+<constructor-arg value="10" type="int"></constructor-arg>  
+</bean> 
+-----------LIST----------------
+<constructor-arg>  
+<list>  
+<value>Java is a programming language</value>  
+<value>Java is a Platform</value>  
+<value>Java is an Island of Indonasia</value>  
+</list>  
+</constructor-arg>
+@@@@@@@@@@@@@@@@@@@@@@-----------List of bean<constructor-arg>  
+<list>  
+<ref bean="ans1"/>  
+<ref bean="ans2"/>  
+</list>  
+</constructor-arg>  
+SSSSSSSSSSSSSSSS-----------
+<constructor-arg>  
+<map>  
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>  
+</constructor-arg>  
+----------------set---------------
+By Setter method
+<property name="answers">  
+<map>  
+<entry key-ref="answer1" value-ref="user1"></entry>  
+<entry key-ref="answer2" value-ref="user2"></entry>  
+</map>  
+</property>  
